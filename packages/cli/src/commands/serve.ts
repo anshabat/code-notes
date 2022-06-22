@@ -2,6 +2,8 @@ import path from 'path';
 import { Command } from 'commander';
 import { serve } from 'local-api';
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 //<...> - mandatory argument from user
 //[...] - optional argument form user
 export const serveCommand = new Command()
@@ -12,7 +14,13 @@ export const serveCommand = new Command()
     try {
       //logic after user run serve command
       const dir = path.join(process.cwd(), path.dirname(filename));
-      await serve(parseInt(options.port), path.basename(filename), dir);
+      await serve(
+        parseInt(options.port),
+        path.basename(filename),
+        dir,
+        !isProduction
+      );
+
       console.log(
         `Opened ${filename}. Navigate to http://localhost:${options.port} to edit the file.`
       );
