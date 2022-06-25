@@ -22,10 +22,13 @@ const initialState: CellsState = {
 const reducer = (immutableState: CellsState = initialState, action: Action) => {
   return produce(immutableState, (state) => {
     switch (action.type) {
+      case ActionType.SAVE_CELLS_ERROR:
+        state.error = action.payload;
+        return;
       case ActionType.FETCH_CELLS:
         state.error = null;
         state.loading = true;
-        return state;
+        return;
       case ActionType.FETCH_CELLS_COMPLETE:
         state.loading = false;
         state.order = action.payload.map((cell) => cell.id);
@@ -33,11 +36,11 @@ const reducer = (immutableState: CellsState = initialState, action: Action) => {
           acc[cell.id] = cell;
           return acc;
         }, {} as CellsState['data']);
-        return state;
+        return;
       case ActionType.FETCH_CELLS_ERROR:
         state.error = action.payload;
         state.loading = false;
-        return state;
+        return;
       case ActionType.MOVE_CELL:
         const index = state.order.findIndex((id) => id === action.payload.id);
         const targetIndex =
