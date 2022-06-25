@@ -10,6 +10,7 @@ const cells_1 = require("./routes/cells");
 const path_1 = __importDefault(require("path"));
 const serve = (port, filename, dir, useProxy) => {
     const app = (0, express_1.default)();
+    app.use((0, cells_1.createCellsRouter)(filename, dir));
     if (useProxy) {
         // serve local client app via local-api intended for developers who running app in dev mode
         // and we need create react app server running
@@ -24,7 +25,6 @@ const serve = (port, filename, dir, useProxy) => {
         const packagePath = require.resolve('client/build/index.html');
         app.use(express_1.default.static(path_1.default.dirname(packagePath)));
     }
-    app.use((0, cells_1.createCellsRouter)(filename, dir));
     return new Promise((resolve, reject) => {
         app.listen(port, resolve).on('error', reject);
     });

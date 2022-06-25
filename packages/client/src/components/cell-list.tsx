@@ -1,13 +1,19 @@
 import './cell-list.css';
-import React, { FC, Fragment } from 'react';
+import React, { FC, Fragment, useEffect } from 'react';
 import { useTypedSelector } from '../hooks/use-types-selector';
 import AddCell from './add-cell';
 import CellListItem from './cell-list-item';
+import { useActions } from '../hooks/use-actions';
 
 const CellList: FC = () => {
   const cells = useTypedSelector(({ cells: { order, data } }) =>
     order.map((id) => data[id])
   );
+  const { fetchSells, saveCells } = useActions();
+
+  useEffect(() => {
+    fetchSells();
+  }, [fetchSells]);
 
   return (
     <div className="cell-list">
