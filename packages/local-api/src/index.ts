@@ -23,7 +23,7 @@ export const serve = (
     );
   } else {
     // serve local client app via local-api intended for user installed cli on local machine
-    const packagePath = require.resolve('local-client/build/index.html');
+    const packagePath = require.resolve('client/build/index.html');
     app.use(express.static(path.dirname(packagePath)));
   }
 
