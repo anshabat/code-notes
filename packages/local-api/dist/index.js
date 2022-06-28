@@ -22,7 +22,7 @@ const serve = (port, filename, dir, useProxy) => {
     }
     else {
         // serve local client app via local-api intended for user installed cli on local machine
-        const packagePath = require.resolve('client/build/index.html');
+        const packagePath = require.resolve('@ashab-jbook/build/index.html');
         app.use(express_1.default.static(path_1.default.dirname(packagePath)));
     }
     return new Promise((resolve, reject) => {

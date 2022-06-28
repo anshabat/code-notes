@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.serveCommand = void 0;
 const path_1 = __importDefault(require("path"));
 const commander_1 = require("commander");
-const local_api_1 = require("local-api");
+const local_api_1 = require("@ashab-jbook/local-api");
 const isProduction = process.env.NODE_ENV === 'production';
 //<...> - mandatory argument from user
 //[...] - optional argument form user
