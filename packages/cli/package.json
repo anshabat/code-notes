@@ -1,6 +1,6 @@
 {
   "name": "ashab-jbook",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "files": [
     "dist"
@@ -18,10 +18,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ashab-jbook/client": "^1.0.0"
+    "@ashab-jbook/client": "^1.0.1"
   },
   "devDependencies": {
-    "@ashab-jbook/local-api": "^1.0.0",
+    "@ashab-jbook/local-api": "^1.0.1",
     "@types/node": "^18.0.0",
     "commander": "^9.3.0",
     "esbuild": "0.8.26",
